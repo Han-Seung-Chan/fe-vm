@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/fe-vm/static/css/main.cf506294.css",
+    "main.js": "/fe-vm/static/js/main.3813b963.js",
+    "index.html": "/fe-vm/index.html",
+    "main.cf506294.css.map": "/fe-vm/static/css/main.cf506294.css.map",
+    "main.3813b963.js.map": "/fe-vm/static/js/main.3813b963.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cf506294.css",
+    "static/js/main.3813b963.js"
+  ]
+}
