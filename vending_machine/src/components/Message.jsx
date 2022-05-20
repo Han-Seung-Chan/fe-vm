@@ -1,13 +1,13 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import styled from 'styled-components';
 
-import { ProgressContext } from '../App';
-import { color, fontSize } from '../style/variables';
+import { color, fontSize } from 'style/variables';
 
 import History from './History';
+import { progressContext } from 'context/ProgressProvider';
 
-const Message = () => {
-  const { progressBox } = useContext(ProgressContext);
+function Message() {
+  const { progressBox } = useContext(progressContext);
 
   return (
     <StyledMessage>
@@ -17,7 +17,7 @@ const Message = () => {
       </ul>
     </StyledMessage>
   );
-};
+}
 
 const StyledMessage = styled.div`
   margin: 0 auto;

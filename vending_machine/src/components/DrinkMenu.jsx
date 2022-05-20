@@ -1,12 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
-import { ProgressContext, TotalMoneyContext } from '../App';
 import DrinkItem from './DrinkItem';
-import { getData } from '../utility/util';
+import { getData } from 'utility/fetch';
+import { minusQuantity } from 'utility/fixData';
+import { CoinDataContext } from 'context/CoinDataProvider';
+import { TotalMoneyContext } from 'context/TotalMoneyProvider';
 
-const DrinkMenu = () => {
+function DrinkMenu() {
   const [drinkData, setDrinkData] = useState([]);
-  const { selectedDrinkMessage } = useContext(ProgressContext);
+  const { selectedDrinkMessage } = useContext(CoinDataContext);
   const [totalMoney, setTotalMoney] = useContext(TotalMoneyContext);
 
   useEffect(() => {
@@ -22,27 +24,19 @@ const DrinkMenu = () => {
 
     selectedDrinkMessage(selectedItem.name);
     setTotalMoney(totalMoney - selectedItem.price);
-    minusQuantity(selectedItem);
-  };
-
-  const minusQuantity = ({ id, quantity }) => {
-    setDrinkData(
-      drinkData.map((data) =>
-        data.id !== id ? data : { ...data, quantity: (quantity -= 1) }
-      )
-    );
+    minusQuantity(drinkData, setDrinkData, selectedItem);
   };
 
   return (
     <>
       {drinkData.map(({ id, price, quantity, name }) => {
         const drinkInfo = {
-          id: id,
-          price: price,
-          quantity: quantity,
-          name: name,
-          totalMoney: totalMoney,
-          soldOut: quantity ? false : true,
+          id,
+          price,
+          quantity,
+          name,
+          totalMoney,
+          soldOut: !quantity,
           onClick: selectDrink,
         };
 
@@ -50,6 +44,6 @@ const DrinkMenu = () => {
       })}
     </>
   );
-};
+}
 
 export default DrinkMenu;

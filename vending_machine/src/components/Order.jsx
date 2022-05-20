@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 
-import { TotalMoneyContext } from '../App';
+import { TotalMoneyContext } from 'context/TotalMoneyProvider';
 import InputForm from './InputForm';
 import Message from './Message';
 import ReturnBtn from './ReturnBtn';
 import TotalMoney from './TotalMoney';
 
-const Order = () => {
+function Order() {
   const [totalMoney, setTotalMoney] = useContext(TotalMoneyContext);
 
   return (
@@ -17,6 +17,6 @@ const Order = () => {
       <Message />
     </>
   );
-};
+}
 
 export default Order;

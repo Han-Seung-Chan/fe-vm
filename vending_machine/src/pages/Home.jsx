@@ -1,12 +1,11 @@
-import React from 'react';
 import styled from 'styled-components';
 
-import DrinkMenu from '../components/DrinkMenu';
-import Order from '../components/Order';
-import { flexCenter } from '../style/mixins';
-import { color } from '../style/variables';
+import DrinkMenu from 'components/DrinkMenu';
+import Order from 'components/Order';
+import { flexCenter } from 'style/mixins';
+import { color } from 'style/variables';
 
-const Home = () => {
+function Home() {
   return (
     <>
       <StyledDrinkMenuBox>
@@ -17,7 +16,7 @@ const Home = () => {
       </StyledOrderBox>
     </>
   );
-};
+}
 
 const StyledDrinkMenuBox = styled.ul`
   ${flexCenter}

@@ -1,30 +1,29 @@
-import React, { useEffect, useState, useContext } from 'react';
+import { useContext } from 'react';
 import styled from 'styled-components';
 
-import { TotalMoneyContext } from '../App';
-import SumMoney from '../components/SumMoney';
-import TotalMoney from '../components/TotalMoney';
-import { getData } from '../utility/util';
-import WalletCoinBox from '../components/WalletCoinBox';
+import SumMoney from 'components/SumMoney';
+import TotalMoney from 'components/TotalMoney';
+import WalletCoinBox from 'components/WalletCoinBox';
+import { CoinDataContext } from 'context/CoinDataProvider';
+import { TotalMoneyContext } from 'context/TotalMoneyProvider';
 
-const Wallet = () => {
-  const [coinData, setCoinData] = useState([]);
+function Wallet() {
+  const [coinData, setCoinData] = useContext(CoinDataContext);
   const [totalMoney, setTotalMoney] = useContext(TotalMoneyContext);
-
-  useEffect(() => {
-    const coinUrl = `${process.env.PUBLIC_URL}/data/coin.json`;
-
-    getData(coinUrl, setCoinData);
-  }, []);
 
   return (
     <WalletContainer>
-      <WalletCoinBox coinData={coinData} setTotalMoney={setTotalMoney} />
+      <WalletCoinBox
+        coinData={coinData}
+        setCoinData={setCoinData}
+        totalMoney={totalMoney}
+        setTotalMoney={setTotalMoney}
+      />
       <TotalMoney totalMoney={totalMoney} />
       <SumMoney coinData={coinData} />
     </WalletContainer>
   );
-};
+}
 
 const WalletContainer = styled.ul`
   margin: 0 auto;

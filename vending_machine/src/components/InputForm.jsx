@@ -1,17 +1,17 @@
-import React, { useContext, useRef } from 'react';
+import { useContext, useRef } from 'react';
 import styled from 'styled-components';
 
-import { ProgressContext } from '../App';
-import { color, fontSize } from '../style/variables';
+import { color, fontSize } from 'style/variables';
 import {
   changeKoreanLocalMoney,
   changeStrMoneyToNumMoney,
-} from '../utility/util';
+} from 'utility/changeValue';
+import { progressContext } from 'context/ProgressProvider';
 
-const InputForm = ({ totalMoney, setTotalMoney }) => {
+function InputForm({ totalMoney, setTotalMoney }) {
   const inputTag = useRef();
 
-  const { addMoneyMessage } = useContext(ProgressContext);
+  const { addMoneyMessage } = useContext(progressContext);
 
   const changeValue = () => {
     const onlyNumber = +inputTag.current.value.replace(/[^0-9]/g, '');
@@ -20,27 +20,26 @@ const InputForm = ({ totalMoney, setTotalMoney }) => {
 
   const changeTotalMoney = (e) => {
     if (e.key !== 'Enter') return;
-    const inputValue = +changeStrMoneyToNumMoney(inputTag.current.value);
-    setTotalMoney(+totalMoney + inputValue);
+
+    const inputValue = changeStrMoneyToNumMoney(inputTag.current.value);
+    setTotalMoney(+totalMoney + +inputValue);
     addMoneyMessage(inputValue);
     inputTag.current.value = '';
   };
 
   return (
-    <>
-      <FormContainer>
-        <StyledInput
-          type="text"
-          placeholder="0"
-          ref={inputTag}
-          onKeyPress={changeTotalMoney}
-          onChange={changeValue}
-        />
-        <StyledSpan>원</StyledSpan>
-      </FormContainer>
-    </>
+    <FormContainer>
+      <StyledInput
+        type="text"
+        placeholder="0"
+        ref={inputTag}
+        onKeyPress={changeTotalMoney}
+        onChange={changeValue}
+      />
+      <StyledSpan>원</StyledSpan>
+    </FormContainer>
   );
-};
+}
 
 const FormContainer = styled.div`
   margin: 0 auto;

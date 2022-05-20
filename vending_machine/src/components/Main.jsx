@@ -1,12 +1,11 @@
-import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
 
-import Home from '../pages/Home';
-import NotFound from '../pages/NotFound';
-import Wallet from '../pages/Wallet';
+import Home from 'pages/Home';
+import NotFound from 'pages/NotFound';
+import Wallet from 'pages/Wallet';
 
-const Main = () => {
+function Main() {
   return (
     <StyledMain>
       <Routes>
@@ -16,7 +15,7 @@ const Main = () => {
       </Routes>
     </StyledMain>
   );
-};
+}
 
 const StyledMain = styled.main`
   display: flex;

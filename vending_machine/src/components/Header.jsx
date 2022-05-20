@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
-
 import { useNavigate } from 'react-router-dom';
-import Button from './Button';
-import { color } from '../style/variables';
 
-const Header = () => {
+import Button from './common/Button';
+import { color } from 'style/variables';
+
+function Header() {
   const navigate = useNavigate();
   const [isClickedVM, setIsClickedVM] = useState(true);
   const [isClickedWallet, setIsClickedWallet] = useState(false);
@@ -22,7 +22,7 @@ const Header = () => {
   return (
     <StyledGnb>
       <MainBtn
-        content={'자판기'}
+        content="자판기"
         disabled={isClickedVM}
         onClick={() => {
           changePage('/');
@@ -30,7 +30,7 @@ const Header = () => {
         }}
       />
       <MainBtn
-        content={'지갑'}
+        content="지갑"
         disabled={isClickedWallet}
         onClick={() => {
           changePage('/wallet');
@@ -39,7 +39,7 @@ const Header = () => {
       />
     </StyledGnb>
   );
-};
+}
 
 const StyledGnb = styled.nav`
   margin-top: 20px;

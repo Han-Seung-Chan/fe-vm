@@ -1,23 +1,26 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import styled from 'styled-components';
 
-import { ProgressContext } from '../App';
-import { color, fontSize } from '../style/variables';
-import Button from './Button';
+import { color, fontSize } from 'style/variables';
+import Button from './common/Button';
+import { progressContext } from 'context/ProgressProvider';
+import { CoinDataContext } from 'context/CoinDataProvider';
 
-const ReturnBtn = ({ totalMoney, setTotalMoney }) => {
-  const { returnMoneyMessage } = useContext(ProgressContext);
+function ReturnBtn({ totalMoney, setTotalMoney }) {
+  const { returnMoneyMessage } = useContext(progressContext);
+  const [coinData, setCoinData] = useContext(CoinDataContext);
 
   const returnTotalMoney = () => {
     if (totalMoney <= 0) return;
+
     returnMoneyMessage(totalMoney);
     setTotalMoney(0);
   };
 
   return (
-    <StyledBtn content={'반환'} disabled={false} onClick={returnTotalMoney} />
+    <StyledBtn content="반환" disabled={false} onClick={returnTotalMoney} />
   );
-};
+}
 
 const StyledBtn = styled(Button)`
   margin-top: 20px;

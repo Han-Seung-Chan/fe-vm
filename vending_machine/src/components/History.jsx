@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
 
-const History = ({ progressBox }) => {
+function History({ progressBox }) {
   return (
     <>
       {progressBox.map((data, idx) => (
@@ -9,7 +8,7 @@ const History = ({ progressBox }) => {
       ))}
     </>
   );
-};
+}
 
 const HistoryItem = styled.li`
   margin-top: 10px;

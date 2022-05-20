@@ -1,13 +1,12 @@
-import React from 'react';
 import styled from 'styled-components';
 
-import { color } from '../style/variables';
-import { changeKoreanLocalMoney } from '../utility/util';
-import Button from './Button';
+import { color } from 'style/variables';
+import { changeKoreanLocalMoney } from 'utility/changeValue';
+import Button from './common/Button';
 
-const DrinkItem = ({
+function DrinkItem({
   drinkInfo: { id, price, name, quantity, totalMoney, soldOut, onClick },
-}) => {
+}) {
   return (
     <DrinkMenuItem price={price} totalMoney={totalMoney} soldOut={soldOut}>
       <DrinkNameBtn content={name} disabled={false} onClick={onClick(id)} />
@@ -17,7 +16,7 @@ const DrinkItem = ({
       <DrinkInfo>{quantity}</DrinkInfo>
     </DrinkMenuItem>
   );
-};
+}
 
 const DrinkMenuItem = styled.li`
   width: 25%;

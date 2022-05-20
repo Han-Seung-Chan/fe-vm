@@ -1,22 +1,39 @@
-import React from 'react';
+import { useContext } from 'react';
 import styled from 'styled-components';
-import { flexBetween } from '../style/mixins';
-import WalletItem from './WalletItem';
 
-const WalletCoinBox = ({ coinData, setTotalMoney }) => {
-  //돈 클릭 시 발생하는 이벤트
-  const putMoneyVM = () => {};
+import { flexBetween } from 'style/mixins';
+import WalletItem from './WalletItem';
+import { minusQuantity } from 'utility/fixData';
+import { progressContext } from 'context/ProgressProvider';
+
+function WalletCoinBox({ coinData, setCoinData, totalMoney, setTotalMoney }) {
+  const { addMoneyMessage } = useContext(progressContext);
+
+  const putMoneyVM = (id) => () => {
+    const selectedItem = coinData.find((data) => data.id === id);
+
+    if (!selectedItem || !selectedItem.quantity) return;
+
+    addMoneyMessage(+selectedItem.unit);
+    setTotalMoney(totalMoney + selectedItem.unit);
+    minusQuantity(coinData, setCoinData, selectedItem);
+  };
 
   return (
     <>
       {coinData.map(({ id, unit, quantity }) => (
         <WalletList key={id}>
-          <WalletItem unit={unit} quantity={quantity} onClick={putMoneyVM} />
+          <WalletItem
+            id={id}
+            unit={unit}
+            quantity={quantity}
+            onClick={putMoneyVM}
+          />
         </WalletList>
       ))}
     </>
   );
-};
+}
 
 const WalletList = styled.li`
   ${flexBetween}

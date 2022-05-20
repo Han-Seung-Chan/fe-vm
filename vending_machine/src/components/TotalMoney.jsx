@@ -1,12 +1,11 @@
-import React from 'react';
 import styled from 'styled-components';
 
-import { changeKoreanLocalMoney } from '../utility/util';
-import { color, fontSize } from '../style/variables';
+import { changeKoreanLocalMoney } from 'utility/changeValue';
+import { color, fontSize } from 'style/variables';
 
-const TotalMoney = ({ totalMoney }) => {
+function TotalMoney({ totalMoney }) {
   return <StyledTotal>{changeKoreanLocalMoney(totalMoney)}원</StyledTotal>;
-};
+}
 
 const StyledTotal = styled.span`
   display: inline-block;

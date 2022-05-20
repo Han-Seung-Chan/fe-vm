@@ -17,9 +17,3 @@ export const getData = async (url, setData) => {
 
   setData(response.data);
 };
-
-export const changeKoreanLocalMoney = (number) =>
-  `${Number(number).toLocaleString('ko-KR')}`;
-
-export const changeStrMoneyToNumMoney = (strMoney) =>
-  strMoney.split(',').join('');
