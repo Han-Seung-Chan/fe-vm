@@ -3,12 +3,10 @@ import styled from 'styled-components';
 
 import { color, fontSize } from 'style/variables';
 import Button from './common/Button';
-import { progressContext } from 'context/ProgressProvider';
-import { CoinDataContext } from 'context/CoinDataProvider';
+import { progressContext } from 'contexts/ProgressProvider';
 
 function ReturnBtn({ totalMoney, setTotalMoney }) {
   const { returnMoneyMessage } = useContext(progressContext);
-  const [coinData, setCoinData] = useContext(CoinDataContext);
 
   const returnTotalMoney = () => {
     if (totalMoney <= 0) return;

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { flexBetween } from 'style/mixins';
 import WalletItem from './WalletItem';
 import { minusQuantity } from 'utility/fixData';
-import { progressContext } from 'context/ProgressProvider';
+import { progressContext } from 'contexts/ProgressProvider';
 
 function WalletCoinBox({ coinData, setCoinData, totalMoney, setTotalMoney }) {
   const { addMoneyMessage } = useContext(progressContext);

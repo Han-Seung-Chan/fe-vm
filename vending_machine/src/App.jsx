@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-import Header from 'components/Header';
 import Main from 'components/Main';
-import TotalMoneyProvider from 'context/TotalMoneyProvider';
-import ProgressProvider from 'context/ProgressProvider';
-import CoinDataProvider from 'context/CoinDataProvider';
+import Header from 'components/Header';
+import TotalMoneyProvider from 'contexts/TotalMoneyProvider';
+import ProgressProvider from 'contexts/ProgressProvider';
+import CoinDataProvider from 'contexts/CoinDataProvider';
 
 function App() {
   return (

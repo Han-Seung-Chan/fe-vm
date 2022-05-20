@@ -3,8 +3,8 @@ import { useContext, useEffect, useState } from 'react';
 import DrinkItem from './DrinkItem';
 import { getData } from 'utility/fetch';
 import { minusQuantity } from 'utility/fixData';
-import { CoinDataContext } from 'context/CoinDataProvider';
-import { TotalMoneyContext } from 'context/TotalMoneyProvider';
+import { CoinDataContext } from 'contexts/CoinDataProvider';
+import { TotalMoneyContext } from 'contexts/TotalMoneyProvider';
 
 function DrinkMenu() {
   const [drinkData, setDrinkData] = useState([]);

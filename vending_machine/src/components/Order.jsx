@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { TotalMoneyContext } from 'context/TotalMoneyProvider';
+import { TotalMoneyContext } from 'contexts/TotalMoneyProvider';
 import InputForm from './InputForm';
 import Message from './Message';
 import ReturnBtn from './ReturnBtn';

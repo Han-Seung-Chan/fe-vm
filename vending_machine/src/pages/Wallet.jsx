@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import SumMoney from 'components/SumMoney';
 import TotalMoney from 'components/TotalMoney';
 import WalletCoinBox from 'components/WalletCoinBox';
-import { CoinDataContext } from 'context/CoinDataProvider';
-import { TotalMoneyContext } from 'context/TotalMoneyProvider';
+import { CoinDataContext } from 'contexts/CoinDataProvider';
+import { TotalMoneyContext } from 'contexts/TotalMoneyProvider';
 
 function Wallet() {
   const [coinData, setCoinData] = useContext(CoinDataContext);

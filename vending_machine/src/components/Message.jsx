@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { color, fontSize } from 'style/variables';
 
 import History from './History';
-import { progressContext } from 'context/ProgressProvider';
+import { progressContext } from 'contexts/ProgressProvider';
 
 function Message() {
   const { progressBox } = useContext(progressContext);

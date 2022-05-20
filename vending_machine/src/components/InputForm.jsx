@@ -6,7 +6,7 @@ import {
   changeKoreanLocalMoney,
   changeStrMoneyToNumMoney,
 } from 'utility/changeValue';
-import { progressContext } from 'context/ProgressProvider';
+import { progressContext } from 'contexts/ProgressProvider';
 
 function InputForm({ totalMoney, setTotalMoney }) {
   const inputTag = useRef();
