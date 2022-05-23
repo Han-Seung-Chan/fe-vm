@@ -3,7 +3,7 @@ import { changeKoreanLocalMoney } from 'utility/changeValue';
 
 export const progressContext = React.createContext();
 
-const reducer = (state, { type, data }) => {
+const messageReducer = (state, { type, data }) => {
   let newState = [];
 
   switch (type) {
@@ -25,7 +25,7 @@ const reducer = (state, { type, data }) => {
 };
 
 function ProgressProvider({ children }) {
-  const [progressBox, dispatch] = useReducer(reducer, []);
+  const [progressBox, dispatch] = useReducer(messageReducer, []);
 
   const addMoneyMessage = (inputMoney) => {
     dispatch({

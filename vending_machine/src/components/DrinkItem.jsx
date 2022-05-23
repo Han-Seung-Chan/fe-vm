@@ -5,10 +5,15 @@ import { changeKoreanLocalMoney } from 'utility/changeValue';
 import Button from './common/Button';
 
 function DrinkItem({
-  drinkInfo: { id, price, name, quantity, totalMoney, soldOut, onClick },
+  drinkInfo: { id, price, name, quantity, soldOut, totalMoney, onClick },
 }) {
   return (
-    <DrinkMenuItem price={price} totalMoney={totalMoney} soldOut={soldOut}>
+    <DrinkMenuItem
+      soldOut={soldOut}
+      quantity={quantity}
+      price={price}
+      totalMoney={totalMoney}
+    >
       <DrinkNameBtn content={name} disabled={false} onClick={onClick(id)} />
       <DrinkInfo>
         {+quantity ? changeKoreanLocalMoney(price) : '품절'}
@@ -20,10 +25,12 @@ function DrinkItem({
 
 const DrinkMenuItem = styled.li`
   width: 25%;
-  border: ${({ price, totalMoney }) =>
-    price > totalMoney
+  border: ${({ quantity, totalMoney, price }) =>
+    !quantity
       ? `2px solid ${color.black} `
-      : `2px solid ${color.blue}`};
+      : totalMoney >= price
+      ? `2px solid ${color.blue} `
+      : `2px solid ${color.black} `};
   background-color: ${({ soldOut }) => (soldOut ? color.red : '')};
   margin: 15px;
 `;

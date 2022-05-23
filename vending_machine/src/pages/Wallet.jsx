@@ -28,7 +28,7 @@ function Wallet() {
 const WalletContainer = styled.ul`
   margin: 0 auto;
   width: 400px;
-  height: 1000px;
+  height: 900px;
   border: 2px solid black;
 `;
 

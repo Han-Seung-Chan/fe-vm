@@ -21,14 +21,17 @@ function InputForm({ totalMoney, setTotalMoney }) {
   const changeTotalMoney = (e) => {
     if (e.key !== 'Enter') return;
 
-    const inputValue = changeStrMoneyToNumMoney(inputTag.current.value);
-    setTotalMoney(+totalMoney + +inputValue);
+    let inputValue = +changeStrMoneyToNumMoney(inputTag.current.value);
+
+    inputValue = inputValue % 10 ? Math.ceil(inputValue / 10) * 10 : inputValue;
+
+    setTotalMoney(totalMoney + inputValue);
     addMoneyMessage(inputValue);
     inputTag.current.value = '';
   };
 
   return (
-    <FormContainer>
+    <InputContainer>
       <StyledInput
         type="text"
         placeholder="0"
@@ -37,11 +40,11 @@ function InputForm({ totalMoney, setTotalMoney }) {
         onChange={changeValue}
       />
       <StyledSpan>원</StyledSpan>
-    </FormContainer>
+    </InputContainer>
   );
 }
 
-const FormContainer = styled.div`
+const InputContainer = styled.div`
   margin: 0 auto;
   width: 270px;
   height: 60px;

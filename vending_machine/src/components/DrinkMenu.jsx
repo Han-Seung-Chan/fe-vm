@@ -3,12 +3,12 @@ import { useContext, useEffect, useState } from 'react';
 import DrinkItem from './DrinkItem';
 import { getData } from 'utility/fetch';
 import { minusQuantity } from 'utility/fixData';
-import { CoinDataContext } from 'contexts/CoinDataProvider';
 import { TotalMoneyContext } from 'contexts/TotalMoneyProvider';
+import { progressContext } from 'contexts/ProgressProvider';
 
 function DrinkMenu() {
   const [drinkData, setDrinkData] = useState([]);
-  const { selectedDrinkMessage } = useContext(CoinDataContext);
+  const { selectedDrinkMessage } = useContext(progressContext);
   const [totalMoney, setTotalMoney] = useContext(TotalMoneyContext);
 
   useEffect(() => {
@@ -19,9 +19,7 @@ function DrinkMenu() {
 
   const selectDrink = (id) => () => {
     const selectedItem = drinkData.find((data) => data.id === id);
-
     if (totalMoney < selectedItem.price || !selectedItem.quantity) return;
-
     selectedDrinkMessage(selectedItem.name);
     setTotalMoney(totalMoney - selectedItem.price);
     minusQuantity(drinkData, setDrinkData, selectedItem);
@@ -35,8 +33,8 @@ function DrinkMenu() {
           price,
           quantity,
           name,
-          totalMoney,
           soldOut: !quantity,
+          totalMoney: totalMoney,
           onClick: selectDrink,
         };
 
